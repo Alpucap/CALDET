@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rating Form</title>
+<style>
+    .ratinginsight{
+        margin: 100px 10px;
+    }
+    .rating-container {
+        text-align: center;
+    }
+    .rating-container h2 {
+        font-weight: 300;
+        letter-spacing: 5px;
+    }
+    .stars {
+        display: inline-block;
+        font-size: 36px;
+    }
+    .star {
+        color: #979797;
+        cursor: pointer;
+    }
+    .star.selected {
+        color: gold;
+    }
+    .insight-form {
+        width: 300px;
+        margin: 0 auto;
+    }
+    .insight-form textarea {
+        width: 100%;
+        height: 100px;
+        margin-top: 0;
+        resize: vertical;
+        background-color: #140a0a;
+        color: #ebeeec;
+        font-weight: 200;
+        letter-spacing: 3px;
+    }
+    .insight-form input[type="submit"] {
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: transparent;
+        color: #ebeeec;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 200;
+        letter-spacing: 3px;
+    }
+    .insight-form input[type="submit"]:hover {
+        background-color: #ebeeec;  
+        color: #140a0a;
+        transition: 0.7s color ease, 0.6s background-color ease;
+    }
+</style>
+</head>
+<body>
+
+<div class="ratinginsight">
+    <div class="rating-container" id="insight">
+        <h2>Rate Us!</h2>
+        <div class="stars">
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+        </div>
+        <input type="hidden" id="rating-input">
+    </div>
+    <div class="insight-form">
+        <form id="insight-form">
+            <textarea name="insight" placeholder="Write your insight here..."></textarea>
+            <br>
+            <input type="submit" value="Submit Insight">
+        </form>
+    </div>
+</div>
+<script>
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating-input');
+    const insightForm = document.getElementById('insight-form');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = parseInt(this.dataset.rating);
+            ratingInput.value = rating;
+    
+            stars.forEach(s => {
+                s.classList.remove('selected');
+            });
+    
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('selected');
+            }
+    
+            // Kirim data rating ke server
+            sendRatingToServer(rating);
+        });
+    });
+    
+    function sendRatingToServer(rating) {
+        fetch('/submit-review', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ rating: rating })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to submit rating');
+            }
+            console.log('Rating submitted successfully');
+        })
+        .catch(error => {
+            console.error('Error submitting rating:', error.message);
+        });
+    }
+
+</script>
+
+</body>
+</html>

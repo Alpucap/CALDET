@@ -1,0 +1,31 @@
+<!-- admin.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin CALDET</title>
+    <script src="js/admin.js"></script>
+    <link rel="stylesheet" href="css\admin.css">
+    <link rel="icon" type="image/x-icon" href="/src/CALDET.png">
+</head>
+<body>
+    <div id="foodForm">
+        <h1>Add Food</h1>
+        <form id="foodForm" action="/addfood" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size" required><br><br>
+            
+            <label for="calorie">Calorie:</label>
+            <input type="number" id="calorie" name="calorie" required><br><br>
+            
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

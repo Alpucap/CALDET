@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    color: #ebeeec;
+    background-color: #140a0a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    width: 0px; 
+    display: none; 
+}
+
+#foodForm {
+    background-color: #140a0a;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 10px;
+}
+
+label {
+    font-weight: 300;
+    letter-spacing: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 22px);
+    border-radius: 0; 
+    background-color: transparent;
+    padding: 10px 0;
+    border: none; 
+    border-bottom: 2px solid #ebeeec; 
+    color: #ebeeec;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: transparent;
+    color: #ebeeec;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #140a0a;
+    color:#ebeeec;
+    transition: 0.7s color ease, 0.6s background-color ease;
+}
